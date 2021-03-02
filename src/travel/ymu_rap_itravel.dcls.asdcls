@@ -1,0 +1,17 @@
+@EndUserText.label: 'Access Control  for YMU_RAP_ITRAVEL'
+@MappingRole: true
+define role YMU_RAP_ITRAVEL {
+  grant
+    select
+      on
+        YMU_RAP_TRAVEL
+          where
+            CurrencyCode = 'EUR'
+            and
+            ( TravelStatus ) = aspect pfcg_auth(ZOSTAT1234,ZOSTAT1234,ACTVT = '03')
+            or
+            true;  //work around because of ABAP environment Trail restrictions
+            
+            
+            
+}
